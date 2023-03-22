@@ -1,0 +1,20 @@
+
+
+
+first to start the project :
+
+Step1: create virtual env
+-python -m venv venv
+-source venv/Scripts/activate
+
+step2:
+-django-admin startproject <name of the project without spaces>
+
+Step-3: to create apps inside the project
+-pytho3 manage.py startapp <name of the app without spaces>
+
+Step-4:
+create the view/Rest endPoint (this is the service for Spring boot)
+
+
+
