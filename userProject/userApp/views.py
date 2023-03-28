@@ -9,7 +9,7 @@ def userView(request):
         'id':1,
         'name':'Tester1',
         'age': 24,
-        'prefession':'Developer',
+        'profession':'Developer',
         'sal':1000000,
         'email':'tester1@gmail.com'
     }
