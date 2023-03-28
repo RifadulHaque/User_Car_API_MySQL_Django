@@ -1,6 +1,3 @@
-
-
-
 first to start the project :
 
 Step1: create virtual env
@@ -9,12 +6,34 @@ Step1: create virtual env
 
 step2:
 -django-admin startproject <name of the project without spaces>
+  in our case it is userProject
 
 Step-3: to create apps inside the project
 -pytho3 manage.py startapp <name of the app without spaces>
+    in our case it is userApp
 
 Step-4:
 create the view/Rest endPoint (this is the service for Spring boot)
 
+Step-5:
+-add the two names in the INSTALLED_APPS
+        'rest_framework',
+        'userApp'
+
+Step-5:
+-add the endPoint URL in the url.py and mention the view that it relates and Test it
+   ex:  path('',views.userView)
+
+Step-6: run the python server
+- python3 manage.py runserver
+
+Step-7: create app level url
+- copy the url.py from the userProject to the userApp and remove the admin level permission and the url for admin
+- add the view for the userApp in the userApp url
+- in the django.urls import include and add this 
+- path('userApp/',include('userApp.urls')) - this will add all the urls from the userApp
 
 
+--------------------------------------------------------------------
+
+To make the app more dynamic add models, so that the view can be dynamic(service can be dynamic)

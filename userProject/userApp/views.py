@@ -1,8 +1,10 @@
-from django.http import JsonResponse
 from django.shortcuts import render
+from django.http import JsonResponse
 
 # Create your views here.
 def userView(request):
+    #static user object which is returned as a JSON
+    #dictionary in Python is like hashmap of Java
     user = {
         'id':1,
         'name':'Tester1',
