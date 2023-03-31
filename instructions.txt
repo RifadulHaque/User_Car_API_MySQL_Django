@@ -2,7 +2,10 @@ first to start the project :
 
 Step1: create virtual env
 -python -m venv venv
--source venv/Scripts/activate
+-source venv/Scripts/activate (prefer to do it in gitbash)
+
+  Extra for everytime we start the vscode: activate the veirtual env
+  - source venv/Scripts/activate
 
 step2:
 -django-admin startproject <name of the project without spaces>
@@ -24,6 +27,16 @@ Step-5:
 -add the endPoint URL in the url.py and mention the view that it relates and Test it
    ex:  path('',views.userView)
 
+Extra info:
+ For connecting to the mysql database:
+  - go to setting of the project
+  - seach for databases- change it sqlit to mysql
+  - add the NAME(name of the database), USER(root) and PASSWORD(mysql password)
+
+Extra step for SQL: used to do database migration to Mysql
+- pyhton3 manage.py makemigrations   (It craetes the MYSQL table for User Model)
+- python3 manage.py migrate          (It applies all the migration)
+
 Step-6: run the python server
 - python3 manage.py runserver
 
@@ -37,3 +50,9 @@ Step-7: create app level url
 --------------------------------------------------------------------
 
 To make the app more dynamic add models, so that the view can be dynamic(service can be dynamic)
+
+Create a model instructions:
+Step 1: import models from django.db
+step 2: craete a class which takes the models.Model as the parameter
+step 3: initialize each variable and set the field type and also specify any special limitations to it.
+step 4: define a __str__ which will return a default string for the model when an obejct is initialized.

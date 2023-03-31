@@ -7,9 +7,9 @@ class User(models.Model):
     age = models.DecimalField(max_digits=3, decimal_places=1)
     profession = models.CharField(max_length=40)
     sal = models.DecimalField(max_digits=10, decimal_places=3)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=50)
 
     #returns the string represenation of the object when the object is called
     def __str__(self):
-        return self.name+self.age+self.profession+self.sal+self.email
+        return 'name: '+self.name+'age: '+self.age+'profession: '+self.profession+ 'salary: '+self.sal+'email: '+self.email
     
