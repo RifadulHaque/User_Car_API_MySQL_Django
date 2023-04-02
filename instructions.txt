@@ -16,12 +16,13 @@ Step-3: to create apps inside the project
     in our case it is userApp
 
 Step-4:
-create the view/Rest endPoint (this is the service for Spring boot)
-
-Step-5:
 -add the two names in the INSTALLED_APPS
         'rest_framework',
         'userApp'
+
+Step-5:
+create the view/Rest endPoint (this is the service for Spring boot)
+ import: from django.http import JsonResponse
 
 Step-5:
 -add the endPoint URL in the url.py and mention the view that it relates and Test it
