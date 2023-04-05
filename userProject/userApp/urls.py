@@ -17,5 +17,8 @@ from django.urls import path
 from userApp import views
 
 urlpatterns = [
-    path('user/',views.userView)
+    # path('users/',views.user_list),
+    # path('users/<int:pk>',views.user_details)
+    path('users/',views.UserList.as_view()),
+    path('users/<int:pk>',views.UserDetails.as_view())
 ]

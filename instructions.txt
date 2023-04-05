@@ -57,3 +57,7 @@ Step 1: import models from django.db
 step 2: craete a class which takes the models.Model as the parameter
 step 3: initialize each variable and set the field type and also specify any special limitations to it.
 step 4: define a __str__ which will return a default string for the model when an obejct is initialized.
+
+Notes:
+Serializer converts DB info to JSON
+De-Serializer Converts JSON data to DB info
