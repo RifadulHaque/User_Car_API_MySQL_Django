@@ -61,3 +61,16 @@ step 4: define a __str__ which will return a default string for the model when a
 Notes:
 Serializer converts DB info to JSON
 De-Serializer Converts JSON data to DB info
+
+Notes:
+We use mixins so that we dont have to repeat the same code for views for different models
+
+ListModelMixin(get()- Handler method) - support for returning the list of object automatically (list() - Action methods)
+CreateModelMixin(Post() Handler method) - Supoort for creating the list of objects (create() - Action methods)
+retrieveModelMixin(get() Handler method) - Support for retrieveing a single object (retrieive() - Action methods)
+UpdateModelMixin(put() handler method) - used for updating a single object (update() - Action methods)
+DestroyModelMixin(delete() handler method) - used for deleing a single object (destroy() - Action methods)
+
+When we create Class based view we will create the Handler methods,
+But we will invoke the Action Method
+
