@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from userApp.models import User # added the User class from models
-from userApp.serializers import UserSerialzier # import this for using the the UserSerializer
+from userApp.models import User,Car # added the User class from models
+from userApp.serializers import UserSerialzier, CarSerialzier # import this for using the the UserSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view # used for function based views
@@ -10,17 +10,18 @@ from django.http import Http404
 from rest_framework import generics,mixins #used for mixins
 from rest_framework import viewsets
 
+"""
 #Used for ViewSet, does the same work as Mixins and Generic Views
-# With viewSet we can support both non-primary and primary views in one method
+# With viewSets we can support both non-primary and primary views in one method
 class UserViewSet(viewsets.ModelViewSet):
     # it tells the mixin which model should be used
     queryset = User.objects.all()
     #it tells which serializer class should be used
     serializer_class = UserSerialzier    
-
+"""
 
 #Generic Views
-"""
+
 #Non-Primary key based operations
 class UserList(generics.ListCreateAPIView):
     # it tells the mixin which model should be used
@@ -28,13 +29,24 @@ class UserList(generics.ListCreateAPIView):
     #it tells which serializer class should be used
     serializer_class = UserSerialzier
 
+class CarList(generics.ListCreateAPIView):
+    # it tells the mixin which model should be used
+    queryset = Car.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = CarSerialzier
+
 #primary key based operations
 class UserDetails(generics.RetrieveUpdateDestroyAPIView):
     # it tells the mixin which model should be used
     queryset = User.objects.all()
     #it tells which serializer class should be used
     serializer_class = UserSerialzier    
-"""
+
+class CarDetails(generics.RetrieveUpdateDestroyAPIView):
+    # it tells the mixin which model should be used
+    queryset = Car.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = CarSerialzier   
     
 # It is used for Mixins, It basically reduces the liens of code that is used for Class based and function based views
 """
