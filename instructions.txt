@@ -74,3 +74,6 @@ DestroyModelMixin(delete() handler method) - used for deleing a single object (d
 When we create Class based view we will create the Handler methods,
 But we will invoke the Action Method
 
+Notes: Generics simplifies the work more than mixins
+Generics are : CreateAPIView, ListAPIView, RetrieiveAPIViwe, DestroyAPIView, UpdateAPIView, LstCreateAPIBiew, 
+                RetrieveUpdateAPIView, RetreiveDestroyAPIView, RetreiveUdpateDestroyAPIView

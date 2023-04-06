@@ -15,8 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from userApp import views
+from rest_framework.routers import DefaultRouter
 
+#used for viewsets
+router = DefaultRouter() #object of default router, creation of router
+router.register('users', views.UserViewSet) # we register the all the viewset in this router
+
+urlpatterns = [
+    path('', include(router.urls)) #router.urls will take care of all the possibl urls for the viewsets, such as get put, post, update etc
+]
+
+#used for mixins, generics etc
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('userApp/',include('userApp.urls'))
 ]
+"""

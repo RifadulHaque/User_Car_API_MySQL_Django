@@ -7,9 +7,37 @@ from rest_framework import status
 from rest_framework.decorators import api_view # used for function based views
 from rest_framework.views import APIView #used for class based views
 from django.http import Http404
-
 from rest_framework import generics,mixins #used for mixins
+from rest_framework import viewsets
 
+#Used for ViewSet, does the same work as Mixins and Generic Views
+# With viewSet we can support both non-primary and primary views in one method
+class UserViewSet(viewsets.ModelViewSet):
+    # it tells the mixin which model should be used
+    queryset = User.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = UserSerialzier    
+
+
+#Generic Views
+"""
+#Non-Primary key based operations
+class UserList(generics.ListCreateAPIView):
+    # it tells the mixin which model should be used
+    queryset = User.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = UserSerialzier
+
+#primary key based operations
+class UserDetails(generics.RetrieveUpdateDestroyAPIView):
+    # it tells the mixin which model should be used
+    queryset = User.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = UserSerialzier    
+"""
+    
+# It is used for Mixins, It basically reduces the liens of code that is used for Class based and function based views
+"""
 class UserList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
 
     # it tells the mixin which model should be used
@@ -38,6 +66,8 @@ class UserDetails(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.Des
     
     def delete(self, request, pk):
         return self.destroy(request, pk)
+
+"""
 
 
 # It is used for class based View, works same as function based views
