@@ -16,9 +16,21 @@ Including another URLconf
 from django.urls import path, include
 from userApp import views
 from rest_framework import routers
+from userApp.views import CarViewSet, UserViewSet #used interms of Nested Serialization using viewSets
+
+
+#used for nested Serialization viewSets
+router = routers.DefaultRouter()
+router.register('user',UserViewSet)
+router.register('car',CarViewSet)
+
+urlpatterns = [
+    path('', include(router.urls))
+]
+
 
 #used for mixins, generics etc
-
+"""
 urlpatterns = [
     # path('users/',views.user_list),
     # path('users/<int:pk>',views.user_details)
@@ -27,3 +39,4 @@ urlpatterns = [
     path('car/',views.CarList.as_view()), #used for generics
     path('car/<int:pk>',views.CarDetails.as_view()) #used for generics
 ]
+"""

@@ -2,16 +2,16 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    id = models.IntegerField(primary_key=True)
+    #id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
-    age = models.DecimalField(max_digits=3, decimal_places=1)
+    age = models.IntegerField()
     profession = models.CharField(max_length=40)
     sal = models.DecimalField(max_digits=10, decimal_places=3)
     email = models.EmailField(max_length=50)
 
     #returns the string represenation of the object when the object is called
     def __str__(self):
-        return 'name: '+self.name+'age: '+self.age+'profession: '+self.profession+ 'salary: '+self.sal+'email: '+self.email
+        return 'name: '+self.name+', age: '+str(self.age)+', profession: '+self.profession+ ', salary: '+str(self.sal)+', email: '+self.email
 
 class Car(models.Model):
     car_name = models.CharField(max_length=15)
@@ -21,4 +21,4 @@ class Car(models.Model):
 
     #returns the string represenation of the object when the object is called
     def __str__(self):
-        return 'name: '+self.car_name+'brand: '+self.brand+'year: '+self.year
+        return f'name: '+self.car_name+', brand: '+self.brand+', year: '+self.year

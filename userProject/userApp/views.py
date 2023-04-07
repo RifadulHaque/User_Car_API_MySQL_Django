@@ -9,19 +9,30 @@ from rest_framework.views import APIView #used for class based views
 from django.http import Http404
 from rest_framework import generics,mixins #used for mixins
 from rest_framework import viewsets
+from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 
-"""
+class UserPagination(PageNumberPagination):
+    page_size=2
+
 #Used for ViewSet, does the same work as Mixins and Generic Views
 # With viewSets we can support both non-primary and primary views in one method
 class UserViewSet(viewsets.ModelViewSet):
     # it tells the mixin which model should be used
     queryset = User.objects.all()
     #it tells which serializer class should be used
-    serializer_class = UserSerialzier    
-"""
+    serializer_class = UserSerialzier
+    pagination_class = UserPagination#custom is used   
+
+class CarViewSet(viewsets.ModelViewSet):
+    # it tells the mixin which model should be used
+    queryset = Car.objects.all()
+    #it tells which serializer class should be used
+    serializer_class = CarSerialzier
+    pagination_class = PageNumberPagination#default is used from settings    
+
 
 #Generic Views
-
+"""
 #Non-Primary key based operations
 class UserList(generics.ListCreateAPIView):
     # it tells the mixin which model should be used
@@ -47,7 +58,8 @@ class CarDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Car.objects.all()
     #it tells which serializer class should be used
     serializer_class = CarSerialzier   
-    
+"""
+
 # It is used for Mixins, It basically reduces the liens of code that is used for Class based and function based views
 """
 class UserList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
