@@ -77,3 +77,10 @@ But we will invoke the Action Method
 Notes: Generics simplifies the work more than mixins
 Generics are : CreateAPIView, ListAPIView, RetrieiveAPIViwe, DestroyAPIView, UpdateAPIView, LstCreateAPIBiew, 
                 RetrieveUpdateAPIView, RetreiveDestroyAPIView, RetreiveUdpateDestroyAPIView
+
+pagination Steps and Notes: Add these lines on the settings.py
+REST_FRAMEWORK={
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE':2
+}
+ 
