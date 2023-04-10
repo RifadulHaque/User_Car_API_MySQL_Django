@@ -84,3 +84,6 @@ REST_FRAMEWORK={
     'PAGE_SIZE':2
 }
  
+Note: Filtereing, for it install pip3 intall django-filter in command prompt
+Add 'django_filters' in the settings install app
+Add" from django_filters.rest_framework import DjangoFilterBackend "in the views

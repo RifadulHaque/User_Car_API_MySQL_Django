@@ -10,6 +10,7 @@ from django.http import Http404
 from rest_framework import generics,mixins #used for mixins
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from django_filters.rest_framework import DjangoFilterBackend
 
 class UserPagination(PageNumberPagination):
     page_size=2
@@ -21,7 +22,10 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     #it tells which serializer class should be used
     serializer_class = UserSerialzier
-    pagination_class = UserPagination#custom is used   
+    pagination_class = UserPagination#custom is used  
+    filter_backends = [DjangoFilterBackend] # it will create a filterset object for us which will do the filtering for us
+    filterset_fields = ['name', 'age', 'profession', 'sal'] # based on which fields the client will do the filtering
+
 
 class CarViewSet(viewsets.ModelViewSet):
     # it tells the mixin which model should be used
