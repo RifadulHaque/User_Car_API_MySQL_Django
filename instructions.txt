@@ -87,3 +87,21 @@ REST_FRAMEWORK={
 Note: Filtereing, for it install pip3 intall django-filter in command prompt
 Add 'django_filters' in the settings install app
 Add" from django_filters.rest_framework import DjangoFilterBackend "in the views
+Add these also:
+    filter_backends = [DjangoFilterBackend] # it will create a filterset object for us which will do the filtering for us
+    filterset_fields = ['field that i want to use'] # based on which fields the client will do the filtering
+
+
+Note: for authentication and Security
+pyhton3 manage.py createsuperuser
+Suepr user:
+username:admin
+password:userapi
+
+User:
+username:Tester1
+password:djangotest1
+
+Global Authentication is added by adding this 2 lines in the settigns.py under the REST_FRAMEWORK section:
+'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated','rest_framework.permissions.DjangoModelPermissions']

@@ -11,6 +11,9 @@ from rest_framework import generics,mixins #used for mixins
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters # this has the search filter class inside it
+#from rest_framework.authentication import BasicAuthentication # contains different types of authentication classes
+#from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions # checks if the user is authenticated
 
 class UserPagination(PageNumberPagination):
     page_size=2
@@ -22,10 +25,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     #it tells which serializer class should be used
     serializer_class = UserSerialzier
+    #authentication_classes = [BasicAuthentication] # makes sure that the user has to login using BasicAuthentication
+    #permission_classes = [IsAuthenticated, DjangoModelPermissions] # user can only access if he/she is authenticated, DjangoModelpermission is added to allow model level permission
     pagination_class = UserPagination#custom is used  
-    filter_backends = [DjangoFilterBackend] # it will create a filterset object for us which will do the filtering for us
-    filterset_fields = ['name', 'age', 'profession', 'sal'] # based on which fields the client will do the filtering
-
+    #filter_backends = [DjangoFilterBackend] # it will create a filterset object for us which will do the filtering for us
+    #filterset_fields = ['name', 'age', 'profession', 'sal'] # based on which fields the client will do the filtering
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['^name', '=age', '^profession', '=sal']
 
 class CarViewSet(viewsets.ModelViewSet):
     # it tells the mixin which model should be used
