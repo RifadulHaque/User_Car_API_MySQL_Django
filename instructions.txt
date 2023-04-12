@@ -105,3 +105,6 @@ password:djangotest1
 Global Authentication is added by adding this 2 lines in the settigns.py under the REST_FRAMEWORK section:
 'DEFAULT_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
 'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated','rest_framework.permissions.DjangoModelPermissions']
+
+Note: Check this link for setting permissions
+http://localhost:8000/admin/auth/user/
