@@ -17,6 +17,7 @@ class Car(models.Model):
     car_name = models.CharField(max_length=15)
     brand = models.CharField(max_length=20)
     year = models.CharField(max_length=4)
+    #The line below states the it is a one to many relationship. An Auther can have many books
     user = models.ForeignKey(User,related_name='cars',on_delete=models.CASCADE) #on_delete is used for cascade which will delte the book when the auher is deleted
 
     #returns the string represenation of the object when the object is called
